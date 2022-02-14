@@ -26,7 +26,7 @@ yarn run build
 yarn run start
 ```
 
-## Testing
+## Testing (NOT IMPLEMENTED)
 
 ### Jest with supertest watching only no versioned changes
 
@@ -39,6 +39,8 @@ yarn run test
 ```
 yarn run test:all
 ```
+### Postman test
+In the \__postman__ directory you will find a file with the requests, you only need to import the file into Postman and run
 
 ## Linting
 

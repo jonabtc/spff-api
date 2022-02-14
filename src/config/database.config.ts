@@ -14,7 +14,6 @@ export default class Database {
       host: process.env.DB_HOST || "",
       password: process.env.DB_PASSWORD || "",
       username: process.env.DB_USER || "",
-      logging: console.log
     });
 
     await this.authenticate();
