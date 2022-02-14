@@ -4,19 +4,30 @@ import morgan from "morgan";
 import database from "./config/database.config";
 import { loadEndpoints } from "./controllers/endpoints";
 
-dotenv.config();
-database.sync().then(() => {
-  console.log("Database synced");
-});
+export default class App {
+  public app: express.Application;
 
-const app = express();
+  constructor() {
+    this.app = express();
+    this.config();
+    this.routes();
+  }
 
-app.set("port", process.env.PORT || 3000);
-app.set("version", process.env.VERSION || "v1");
-app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+  private config(): void {
+    dotenv.config();
+    database.connect();
+    this.app.set("port", process.env.PORT || 3000);
+    this.app.set("version", process.env.VERSION || "v1");
+    this.app.use(morgan("dev"));
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
+  }
 
-loadEndpoints(app);
+  private routes(): void {
+    loadEndpoints(this.app);
+  }
 
-export default app;
+  public close(): void {
+    database.disconnect();
+  }
+}

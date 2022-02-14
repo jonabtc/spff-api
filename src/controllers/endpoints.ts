@@ -1,10 +1,11 @@
 import { Application } from "express";
 
-import appRoutes from "../routes/app.routes";
+import vehicleRoutes from "../routes/vehicle.routes";
+import driverRoutes from "../routes/driver.routes";
 
 export const loadEndpoints = (app: Application): void => {
-  
   const prefix = "/api/" + app.get("version");
-  
-  app.use(prefix, appRoutes);  
+
+  app.use(prefix, vehicleRoutes);
+  app.use(prefix, driverRoutes);
 };

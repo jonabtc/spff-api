@@ -14,24 +14,30 @@ This is a repository intended to serve as a starting point if you want to bootst
 
 ```
 # install dependencies
-npm install
+yarn 
 
 # run in dev mode on port 3000
-npm run dev
+yarn run dev
 
 # generate production build
-npm run build
+yarn run build
 
 # run generated content in dist folder on port 3000
-npm run start
+yarn run start
 ```
 
 ## Testing
 
-### Jest with supertest
+### Jest with supertest watching only no versioned changes
 
 ```
-npm run test
+yarn run test
+```
+
+### Jest with supertest all test
+
+```
+yarn run test:all
 ```
 
 ## Linting
